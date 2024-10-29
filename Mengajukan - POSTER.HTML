@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concert Ticket</title>
+    <style>
+        /* General reset and font setup */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #333;
+            color: #fff;
+            flex-direction: column; /* Aligns content vertically */
+        }
+        
+        /* Main container */
+        .ticket-container {
+            width: 90%;
+            max-width: 800px;
+            background-color: #222;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px; /* Space between ticket and message */
+        }
+
+        /* Top section with background image */
+        .ticket-header {
+            position: relative;
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTi3HoBhaF-WeJHdTizROpCaNLTU04UtWa6cA&usqp=CAU');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+        }
+
+        .ticket-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .concert-info {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: #f3f3f3;
+        }
+
+        .concert-info h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        .concert-info p {
+            font-size: 1.2em;
+            margin-top: 5px;
+        }
+
+        /* Details section */
+        .ticket-details {
+            padding: 20px;
+            background-color: #292929;
+        }
+
+        .ticket-details h2 {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #FF8C42;
+        }
+
+        .ticket-details .date-location {
+            font-size: 1.1em;
+            color: #bbbbbb;
+            margin: 10px 0;
+        }
+
+        /* Pricing and button */
+        .pricing-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .price {
+            font-size: 1.8em;
+            color: #ff5722;
+            font-weight: bold;
+        }
+
+        .btn-buy {
+            padding: 10px 20px;
+            background-color: #FF8C42;
+            color: #222;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-buy:hover {
+            background-color: #ffa64d;
+        }
+
+        /* Popup styling */
+        .popup {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup-content {
+            background-color: #fff;
+            color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+            width: 300px;
+        }
+
+        .btn-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function showPopup() {
+            const popup = document.getElementById('purchase-popup');
+            popup.style.display = 'flex'; // Show the popup
+        }
+
+        function closePopup() {
+            const popup = document.getElementById('purchase-popup');
+            popup.style.display = 'none'; // Hide the popup
+        }
+    </script>
+</head>
+<body>
+    <div class="ticket-container">
+        <!-- Header with background image -->
+        <div class="ticket-header">
+            <div class="concert-info">
+                <h1>Live Concert</h1>
+                <p>September 6, 2025</p>
+            </div>
+        </div>
+        
+        <!-- Event details -->
+        <div class="ticket-details">
+            <h2>Live Concert - Jakarta</h2>
+            <p class="date-location">Location TBD | September 6, 2025 | 7 - 10 PM</p>
+            
+            <!-- Pricing and Buy button -->
+            <div class="pricing-section">
+                <div class="price">Rp 650,000</div>
+                <button class="btn-buy" onclick="showPopup()">Buy Ticket</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Popup for purchase message -->
+    <div class="popup" id="purchase-popup">
+        <div class="popup-content">
+            <button class="btn-close" onclick="closePopup()">×</button>
+            <h2>Congratulations!</h2>
+            <p>You have successfully purchased the ticket.</p>
+        </div>
+    </div>
+</body>
+</html>
